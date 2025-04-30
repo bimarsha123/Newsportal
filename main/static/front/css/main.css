@@ -247,7 +247,7 @@ a.left-topbar-item:hover {
 
 
 .logo {
-  width: 25%;
+  width: 35%;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1124,7 +1124,7 @@ a.breadcrumb-item:hover {
 .cl3 {color: #333;}
 .cl4 {color: #444;}
 .cl5 {color: #555;}
-.cl6 {color: #666;}
+.cl6 {color: #FFF;}
 .cl7 {color: #777;}
 .cl8 {color: #888;}
 .cl9 {color: #999;}
@@ -1513,16 +1513,16 @@ a.breadcrumb-item:hover {
 .bg-none {background-color: transparent;}
 .bg0 {background-color: #fff;}
 .bg1 {background-color: #111;}
-.bg2 {background-color: #222;}
+.bg2 {background-color: #125b8e;}
 .bg3 {background-color: #333;}
 .bg4 {background-color: #444;}
 .bg5 {background-color: #555;}
-.bg6 {background-color: #666;}
+.bg6 {background-color: #8e4512;}
 .bg7 {background-color: #777;}
 .bg8 {background-color: #888;}
 .bg9 {background-color: #999;}
 .bg10 {background-color: #FF6300;}
-.bg11 {background-color: #151515;}
+.bg11 {background-color: #111;}
 
 
 /*---------------------------------------------*/

@@ -1,4 +1,4 @@
-{% load static %} {% load humanize %}
+{% load static %} {% load humanize %} {% load nepali_date_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +90,7 @@
             href="#"
             style="font-size: 16px; color: #333"
           >
-            <i class="fas fa-calendar"></i> {% now "F j, Y H:i" %}
+            <i class="fas fa-calendar"></i> {{ now|nepali_date }} B.S
             <!-- <span class="dis-inline-block cl16 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
 								
 						{% for trend in trending %}

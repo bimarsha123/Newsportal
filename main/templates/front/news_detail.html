@@ -1,13 +1,13 @@
 {% extends 'front/master.html' %}
 
 
-{% load static %}
+{% load static %} {% load humanize %}
+
 
 {% load qr_code %}
 
 
 {% block headblock %}
-<title>{{ site.name }} | News Detail</title>
 {% endblock %}
 
 
@@ -17,6 +17,8 @@
 
 
 {% for i in shownews %}
+<title>{{ i.name }}</title>
+
 <!-- Breadcrumb -->
 <div class="container">
     <div class="headline bg0 flex-wr-sb-c p-rl-20 p-tb-8">
@@ -51,8 +53,8 @@
                 <div class="p-r-10 p-r-0-sr991">
                     <!-- Blog Detail -->
                     <div class="p-b-70">
-                        <a href="#" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
-                            {{ i.catname }}
+                        <a href="{% url 'category' %}?q={{i.ocatid_id }}" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
+                            <b>{{ i.ocatid }}</b>
                         </a>
 
                         <h3 class="f1-l-3 cl2 p-b-16 p-t-33 respon2">
@@ -68,7 +70,7 @@
                                 <span class="m-rl-3">-</span>
 
                                 <span>
-                                    {{ i.date }}
+                                    {{ i.created_at|naturaltime }}
                                 </span>
                             </span>
 
