@@ -1,0 +1,563 @@
+{% load static %} {% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block headblock %} {% endblock %}
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{% static 'front/images/icons/favicon.png' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/vendor/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/fonts/fontawesome-5.0.8/css/fontawesome-all.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/fonts/iconic/css/material-design-iconic-font.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/vendor/animate/animate.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/vendor/css-hamburgers/hamburgers.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/vendor/animsition/css/animsition.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/css/util.min.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'front/css/main.css' %}"
+    />
+    <!--===============================================================================================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vesper+Libre:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="animsition vesper-libre-regular">
+    <!-- Header Section Start -->
+    <header>
+      <!-- Header desktop -->
+      <div class="container-menu-desktop">
+        <!-- Bootstrap Navbar Start -->
+        <nav
+          class="navbar navbar-expand-lg navbar-dark"
+          style="
+            margin-left: 40px;
+            height: 30px;
+            background-color: #fff;
+            border-bottom: 2px solid #f9f9f9;
+          "
+        >
+          <span
+            class="navbar-brand"
+            href="#"
+            style="font-size: 16px; color: #333"
+          >
+            <i class="fas fa-calendar"></i> {% now "F j, Y H:i" %}
+            <!-- <span class="dis-inline-block cl16 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
+								
+						{% for trend in trending %}
+						<span class="dis-inline-block slide100-txt-item animated visible-false" style="font-size: 13px;color: black;">
+							{{ trend.txt|slice:80 }}
+						</span>
+						{% endfor %} 
+
+					</span> -->
+          </span>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarColor02"
+            aria-controls="navbarColor02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon" style="color: black"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/"
+                  >Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  data-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  >{{request.user}}</a
+                >
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/about">About</a>
+                  <a class="dropdown-item" href="/contact">Contact</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Log in / Sing up</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Bootstrap Navbar End -->
+
+        <!-- Top Bar Start -->
+        <div class="topbar" style="display: none">
+          <div class="content-topbar h-100 p-rl-30">
+            <div class="align-self-stretch size-w-0 pos-relative m-r-30">
+              <div class="f2-s-1 flex-wr-s-c s-full ab-t-l p-b-2">
+                <span class="text-uppercase cl0 p-r-8"> Trending Now: </span>
+
+                <span
+                  class="dis-inline-block cl16 slide100-txt pos-relative size-w-0"
+                  data-in="fadeInDown"
+                  data-out="fadeOutDown"
+                >
+                  {% for trend in trending %}
+                  <span
+                    class="dis-inline-block slide100-txt-item animated visible-false"
+                  >
+                    {{ trend.txt }}
+                  </span>
+                  {% endfor %}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex-wr-e-c">
+              <div class="left-topbar">
+                <a href="/about" class="left-topbar-item"> About </a>
+
+                <a href="/contact" class="left-topbar-item"> Contact </a>
+
+                <a href="/login" class="left-topbar-item"> Log in / Sing up </a>
+
+                <a href="#" class="left-topbar-item"></a>
+              </div>
+
+              <div class="right-topbar p-l-18">
+                <a href="{{ site.fb }}">
+                  <span class="fab fa-facebook-f"></span>
+                </a>
+
+                <a href="{{ site.tw }}">
+                  <span class="fab fa-twitter"></span>
+                </a>
+
+                <a href="{{ site.yt }}">
+                  <span class="fab fa-youtube"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Top Bar End -->
+
+        <!-- Start (Top Logo) -->
+        <div class="wrap-logo container">
+          <!-- Logo desktop(Logo in Top Section) Start -->
+          <div class="logo flex-c-c justify-content-center align-self-stretch">
+            <a href="/"><img src="{{ site.picurl }}" alt="LOGO" /></a>
+            <!-- Logo in Top Section -->
+          </div>
+          <!-- Logo desktop(Logo in Top Section) End -->
+          <div style="max-width: 400px">
+            <img
+              src="{{site.adurl1}}"
+              alt="Advert"
+              style="max-width: 100%; height: auto"
+            />
+          </div>
+        </div>
+        <!-- End (Top Logo) -->
+
+        <!-- Start -->
+        <div
+          class="wrap-main-nav vesper-libre-bold"
+          style="margin-bottom: 10px"
+        >
+          <div class="main-nav" style="background-color: #125b8e">
+            <!-- Menu desktop (Menu nav bar) Start -->
+            <nav class="menu-desktop">
+              <a class="logo-stick" href="/">
+                <img src="{{ site.picurl }}" alt="LOGO" />
+              </a>
+
+              <ul class="main-menu justify-content-center">
+                <li class="main-menu-active">
+                  <a href="/"><i class="fas fa-home"></i></a>
+                </li>
+
+                <!-- categories from views.py(main app) -->
+                {% for gg in cat %} {% if gg.count != 0 %}
+                <!--if the category has no news then the category will not be shown-->
+                <li class="mega-menu-item">
+                  <a href="{% url 'category' %}?q={{ gg.id }}">{{ gg.name }}</a>
+
+                  <div class="sub-mega-menu">
+                    <!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) Start -->
+                    <div class="nav flex-column nav-pills" role="tablist">
+                      <a
+                        class="nav-link active"
+                        data-toggle="pill"
+                        href="#news-0"
+                        role="tab"
+                        >All</a
+                      >
+
+                      {% for subcat in subcat %} {% if subcat.catid == gg.pk %}
+                      <a
+                        class="nav-link"
+                        data-toggle="pill"
+                        href="#{{ subcat.pk }}"
+                        role="tab"
+                        >{{ subcat.name }}</a
+                      >
+                      {% endif %} {% endfor %}
+                    </div>
+                    <!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) End -->
+
+                    <!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) Start -->
+                    <div class="tab-content">
+                      <div
+                        class="tab-pane show active"
+                        id="news-0"
+                        role="tabpanel"
+                      >
+                        <div class="row">
+                          <!-- here news is a query name from main app's views -->
+                          {% for hh in news %} {% if hh.ocatid_id == gg.pk %}
+                          <!-- pk means id of the category -->
+                          <div class="col-3">
+                            <!-- Item post -->
+                            <div>
+                              <a
+                                href="{% url 'news_detail' word=hh.id %}"
+                                class="wrap-pic-w hov1 trans-03"
+                              >
+                                <img
+                                  style="
+                                    display: inline-block;
+                                    width: 220x;
+                                    height: 110px;
+                                  "
+                                  src="/media/{{ hh.picture.name }}"
+                                  alt="IMG"
+                                />
+                              </a>
+
+                              <div class="p-t-10">
+                                <h5 class="p-b-5">
+                                  <a
+                                    href="#"
+                                    class="f1-s-5 cl3 hov-cl10 trans-03"
+                                  >
+                                    {{ hh.name }}
+                                  </a>
+                                </h5>
+
+                                <span class="cl8">
+                                  <a
+                                    href="{% url 'news_detail' word=hh.id %}"
+                                    class="f1-s-6 cl8 hov-cl10 trans-03"
+                                  >
+                                    {{ hh.catname }}
+                                  </a>
+
+                                  <span class="f1-s-3 m-rl-3"> - </span>
+
+                                  <span class="f1-s-3"> {{ hh.created_at|naturaltime }} </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          {% endif%} {% endfor %}
+                        </div>
+                      </div>
+
+                      {% for subcat2 in subcat %}
+                      <div
+                        class="tab-pane"
+                        id="{{ subcat2.pk }}"
+                        role="tabpanel"
+                      >
+                        <div class="row">
+                          <!-- here news is a query name from main app's views -->
+                          {% for hh in news %} {% if hh.catid == subcat2.pk %}
+                          <!-- pk means id of the category -->
+                          <div class="col-3">
+                            <!-- Item post -->
+                            <div>
+                              <a
+                                href="{% url 'news_detail' word=hh.id %}"
+                                class="wrap-pic-w hov1 trans-03"
+                              >
+                                <img
+                                  style="
+                                    display: inline-block;
+                                    width: 220x;
+                                    height: 110px;
+                                  "
+                                  src="/media/{{ hh.picture.name }}"
+                                  alt="IMG"
+                                />
+                              </a>
+
+                              <div class="p-t-10">
+                                <h5 class="p-b-5">
+                                  <a
+                                    href="#"
+                                    class="f1-s-5 cl3 hov-cl10 trans-03"
+                                  >
+                                    {{ hh.name }}
+                                  </a>
+                                </h5>
+
+                                <span class="cl8">
+                                  <a
+                                    href="{% url 'news_detail' word=hh.id %}"
+                                    class="f1-s-6 cl8 hov-cl10 trans-03"
+                                  >
+                                    {{ hh.catname }}
+                                  </a>
+
+                                  <span class="f1-s-3 m-rl-3"> - </span>
+
+                                  <span class="f1-s-3"> {{ hh.created_at|naturaltime }} </span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          {% endif%} {% endfor %}
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) End -->
+                  </div>
+                </li>
+                {% endif %} {% endfor %}
+              </ul>
+            </nav>
+            <!-- Menu desktop (Menu nav bar) End -->
+          </div>
+        </div>
+        <!-- End -->
+      </div>
+    </header>
+    <!-- Header Section End -->
+
+    {% block mainblock %} {% endblock %}
+
+    <!-- Footer Section Start -->
+    <footer>
+      <div class="bg2 p-t-40 p-b-25">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 p-b-20">
+              <div class="size-h-3 flex-s-c m-all-40">
+                <a href="/">
+                  <img class="max-s-full" src="{{ site.picurl2 }}" alt="LOGO" />
+                </a>
+              </div>
+
+              <div>
+                <p class="f1-s-1 cl11 p-b-16">{{site.about | safe }}</p>
+
+                <p class="f1-s-1 cl11 p-b-16">
+                  <i class="fas fa-phone"> </i> {{ site.tell }}
+                </p>
+
+                <div class="p-t-15">
+                  <a
+                    href="{{ site.fb }}"
+                    class="fs-18 cl11 hov-cl10 trans-03 m-r-8"
+                  >
+                    <span class="fab fa-facebook-f"></span>
+                  </a>
+
+                  <a
+                    href="{{ site.tw }}"
+                    class="fs-18 cl11 hov-cl10 trans-03 m-r-8"
+                  >
+                    <span class="fab fa-twitter"></span>
+                  </a>
+
+                  <a
+                    href="{{ site.yt }}"
+                    class="fs-18 cl11 hov-cl10 trans-03 m-r-8"
+                  >
+                    <span class="fab fa-youtube"></span>
+                  </a>
+                </div>
+                <br />
+
+                <!-- Newaletter Start -->
+                <form action="{% url 'news_letter' %}" method="POST">
+                  {% csrf_token %}
+                  <input
+                    class="bo-1-rad-3 bocl13 size-a-19 f1-s-13 cl5 plh6 p-rl-18 m-b-20"
+                    type="txt"
+                    name="txt"
+                    placeholder="Email or Phone Number"
+                  />
+                  <button
+                    type="submit"
+                    class="size-a-20 bg1 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-20"
+                  >
+                    Send
+                  </button>
+                </form>
+                <!-- Newaletter End -->
+              </div>
+            </div>
+
+            <!-- Popular Post in Footer Section Start  -->
+            <div class="col-sm-6 col-lg-4 p-b-20">
+              <div class="size-h-3 flex-s-c">
+                <h5 class="f1-m-7 cl0">Popular Posts</h5>
+              </div>
+
+              <!-- Dynamic Popular Post in Footer Section Start -->
+              <ul>
+                {% for pop in popnews2 %}
+                <li class="flex-wr-sb-s p-b-20">
+                  <a
+                    href="{% url 'news_detail' word=pop.id %}"
+                    class="size-w-4 wrap-pic-w hov1 trans-03"
+                  >
+                    <img src="/media/{{ pop.picture.name }}" alt="IMG" />
+                  </a>
+
+                  <div class="size-w-5">
+                    <h6 class="p-b-5">
+                      <a
+                        href="{% url 'news_detail' word=pop.id %}"
+                        class="f1-s-5 cl11 hov-cl10 trans-03"
+                      >
+                        {{ pop.name }}
+                      </a>
+                    </h6>
+
+                    <span class="f1-s-3 cl6"> {{ pop.created_at|naturaltime }} </span>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+              <!-- Dynamic Popular Post in Footer Section End -->
+            </div>
+            <!-- Popular Post in Footer Section(Dynamic) End  -->
+
+            <div
+              class="col-sm-6 col-lg-4 p-b-20"
+              style="display: flex; flex-direction: column; color: #f9f9f9"
+            >
+              <div class="size-h-3 flex-s-c">
+                <h5 class="f1-m-7 cl0">कार्यालय सम्पर्क</h5>
+              </div>
+              <div style="font-size: 20px">
+                <b class="vesper-libre-bold"
+                  >अभियान्ता मिडिया ग्रुप प्रा लि द्वारा संचालित</b
+                ><br />
+                इन्जिनियर खबर डट कम <br /><b class="vesper-libre-bold"
+                  >अध्यक्ष तथा प्रकाशक : </b
+                >अनिस अधिकारी<br />
+                <b class="vesper-libre-bold">
+                  सुचना तथा प्रशारण विभाग दर्ता नम्बर:
+                </b>
+                <br />
+                १०२५ /२०७५ -२०७६
+              </div>
+            </div>
+            <!-- For showing categories in footer start -->
+
+            <!-- <ul class="m-t--12">
+							{% for c in cat %}
+							{% if c.count != 0 %} 
+							<li class="how-bor1 p-rl-5 p-tb-10">
+								<a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+									{{ c.name }} ({{ c.count }})
+								</a>
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul> -->
+
+            <!-- For showing categories in footer end -->
+          </div>
+        </div>
+      </div>
+
+      <div class="bg11">
+        <div class="container size-h-4 flex-c-c p-tb-15">
+          <span class="f1-s-1 cl0 txt-center">
+            © 2025 | Powered By: SoftKraft Technologies
+          </span>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Back to top (Angle Up) Start -->
+    <div class="btn-back-to-top" id="myBtn">
+      <span class="symbol-btn-back-to-top">
+        <span class="fas fa-angle-up"></span>
+      </span>
+    </div>
+    <!-- Back to top (Angle Up) End -->
+
+    <!--===============================================================================================-->
+    <script src="{% static 'front/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'front/vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'front/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'front/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'front/js/main.js' %}"></script>
+  </body>
+</html>
