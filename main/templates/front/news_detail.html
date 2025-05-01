@@ -18,7 +18,7 @@
 
 {% for i in shownews %}
 <title>{{ i.name }}</title>
-
+  <meta property="og:image" content="https://www.engineerkhabar.com/media/{{ i.picture.name }}" />
 <!-- Breadcrumb -->
 <div class="container">
     <div class="headline bg0 flex-wr-sb-c p-rl-20 p-tb-8">
@@ -64,7 +64,7 @@
                         <div class="flex-wr-s-s p-b-40">
                             <span class="f1-s-3 cl8 m-r-15">
                                 <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-                                    by {{ i.writer }}
+                                     {{ i.writer }}
                                 </a>
 
                                 <span class="m-rl-3">-</span>
@@ -278,18 +278,18 @@
                     <div>
                         <div class="how2 how2-cl4 flex-s-c m-b-30">
                             <h3 class="f1-m-2 cl3 tab01-title">
-                                QR Code
+                                Advertisment Space
                             </h3>
                         </div>
 
                         <div class="flex-wr-s-s m-rl--5">
-                        <!-- QR Code Start -->  
-                        {% qr_from_text link size=20 border=6 %} <!-- link is a query name -->
+                        <!-- Advertisment2 Code Start -->  
+                         <!-- Insert advertsiment here -->
                         <!-- QR Code End -->                     
                         </div>	
 
                     </div>
-                    <!-- QR Code Template End -->
+                    <!-- Advertisment2 Code Template End -->
 
 
                 </div>
