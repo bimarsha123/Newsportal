@@ -2,12 +2,11 @@
 
 
 {% load static %} {% load humanize %}
-
-
-{% load qr_code %}
-
-
 {% block headblock %}
+{% for i in shownews %}
+<meta property="og:image:secure_url" content="https://www.engineerkhabar.com/media/{{ i.picture.name }}" />
+<meta property="og:image" content="https://www.engineerkhabar.com/media/{{ i.picture.name }}" />
+{% endfor %}
 {% endblock %}
 
 
@@ -15,13 +14,18 @@
 
 {% block mainblock %}
 
-
 {% for i in shownews %}
+
+
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Your image description" />
+
 <title>{{ i.name }}</title>
-  <meta property="og:image" content="https://www.engineerkhabar.com/media/{{ i.picture.name }}" />
+
 <!-- Breadcrumb -->
 <div class="container">
-    <div class="headline bg0 flex-wr-sb-c p-rl-20 p-tb-8">
+    <div class="headline bg0 flex-wr-sb-c p-rl-20">
         <div class="f2-s-1 p-r-30 m-tb-6">
             <a href="/" class="breadcrumb-item f1-s-3 cl9">
                 Home 
@@ -32,7 +36,7 @@
             </a>
 
             <span class="breadcrumb-item f1-s-3 cl9">
-                 {{ i.name }}
+                 {{ i.ocatid }}
             </span>
         </div>
 
@@ -46,16 +50,14 @@
 </div>
 
 <!-- Content -->
-<section class="bg0 p-b-140 p-t-10">
+<section class="bg0 p-b-140">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8 p-b-30">
                 <div class="p-r-10 p-r-0-sr991">
                     <!-- Blog Detail -->
                     <div class="p-b-70">
-                        <a href="{% url 'category' %}?q={{i.ocatid_id }}" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
-                            <b>{{ i.ocatid }}</b>
-                        </a>
+
 
                         <h3 class="f1-l-3 cl2 p-b-16 p-t-33 respon2">
                             {{ i.name }}
@@ -84,7 +86,7 @@
                         </div>
 
                         <div class="wrap-pic-max-w p-b-30">
-                            <img src="/media/{{ i.picture.name }}" alt="IMG">
+                            <img src="/media/{{ i.picture.name }}" alt="{{ i.picture.name }}">
                         </div>
 
                         <p align="justify" class="f1-s-11 cl6 p-b-25">
@@ -205,6 +207,8 @@
                             <h3>
                                 <a href="" class="f1-s-5 cl3 hov-cl10 trans-03 tab01-title">Popular Post</a>
                             </h3>
+                            
+                            	
                         </div>
                         <div>
                             <h3>
@@ -213,42 +217,55 @@
                         </div>
                         </div>
 
-                        <ul class="p-t-35">
+            
 
-                            {% for pop in popnews %}
-                            {% if pop.ocatid_id == i.ocatid %}  <!-- Same category's news will be shown in popular news -->
-                            <li class="flex-wr-sb-s p-b-30">
-                                <a href="{% url 'news_detail' word=pop.name %}" class="size-w-10 wrap-pic-w hov1 trans-03">
-                                    <img src="/media/{{ pop.picture.url }}" alt="IMG">
-                                </a>
+                            <!-- Popular post start, popular post will shown the right side of the related categories Start -->
+				
+					
+					<div class="p-t-15">
+							
+								{% for pop in popnews %}
+								{% if pop.ocatid_id == i.ocatid_id %}
+							
+								<div class="">
+								    <!--
+									<a href="{% url 'news_detail' word=pop.id %}" class="size-w-1 wrap-pic-w hov1 trans-03">
+										<img src="/media/{{ pop.picture.name }}" alt="IMG">
+									</a>
+-->
+									<div>
+										<h5 class="p-b-5">
+											<a href="{% url 'news_detail' word=pop.id %}" class="f1-s-5 cl3 hov-cl10 trans-03">
+												{{ pop.name }}
+											</a>
+										</h5>
 
-                                <div class="size-w-11">
-                                    <h6 class="p-b-4">
-                                        <a href="#" class="f1-s-5 cl3 hov-cl10 trans-03">
-                                            {{ pop.name }}
-                                        </a>
-                                    </h6>
+										<span class="cl8">
+											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+												{{ pop.ocatid }}
+											</a>
 
-                                    <span class="cl8 txt-center p-b-24">
-                                        <a href="{% url 'news_detail' word=pop.name %}" class="f1-s-6 cl8 hov-cl10 trans-03">
-                                            {{ pop.catname }}
-                                        </a>
+											<span class="f1-s-3 m-rl-3">
+												-
+											</span>
 
-                                        <span class="f1-s-3 m-rl-3">
-                                            -
-                                        </span>
+											<span class="f1-s-3">
+												{{ pop.created_at|naturaltime }} 
+											</span>
+										</span>
+									</div>
+								</div>
+							
+								{% endif %}
+								{% endfor %}
 
-                                        <span class="f1-s-3">
-                                            {{ pop.date }}
-                                        </span>
-                                    </span>
-                                </div>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-
+							</div>
+							
+							
+							
+		<!-- Popular post end, popular post will shown the right side of the related categories -->
                             
-                        </ul>
+                    
                     </div>
 
                     <!-- Tag -->

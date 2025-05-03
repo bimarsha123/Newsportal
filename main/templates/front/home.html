@@ -227,7 +227,7 @@
 										<span class="cl8">
 											<a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
 												{{ ab.ocatid }}
-												<!--catname is field of databse-->
+												<!--ocatid is field of databse-->
 											</a>
 
 											<span class="f1-s-3 m-rl-3">
@@ -247,11 +247,13 @@
 							</div>
 
 		<!-- Popular post start, popular post will shown the right side of the related categories Start -->
-							<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Popular news according to show(view) Satrt -->
+					<!--
+					
+					<div class="col-sm-6 p-r-25 p-r-15-sr991">
+							
 								{% for pop in popnews %}
 								{% if pop.ocatid_id == newscat.pk %}
-								{% if pop.show != 0 %}  <!-- When anyone click/view the news, it will appear. Otherwise not appear -->
+								{% if pop.show != 0 %}  
 								<div class="flex-wr-sb-s m-b-30">
 									<a href="{% url 'news_detail' word=pop.id %}" class="size-w-1 wrap-pic-w hov1 trans-03">
 										<img src="/media/{{ pop.picture.name }}" alt="IMG">
@@ -282,10 +284,12 @@
 								{% endif %}
 								{% endif %}
 								{% endfor %}
-							<!-- Popular news according to show(view) End -->						
 
 							</div>
-		<!-- Popular post start, popular post will shown the right side of the related categories Start -->
+							
+							-->
+							
+		<!-- Popular post end, popular post will shown the right side of the related categories Start -->
 						
 			
 			</div>

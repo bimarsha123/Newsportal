@@ -1,7 +1,7 @@
 {% load static %} {% load humanize %} {% load nepali_date_tags %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html style="scroll-behavior: smooth;" lang="en">
   <head>
     {% block headblock %} {% endblock %}
 
@@ -201,7 +201,8 @@
         <div class="wrap-logo container">
           <!-- Logo desktop(Logo in Top Section) Start -->
           <div class="logo flex-c-c justify-content-center align-self-stretch">
-            <a href="/"><img src="{{ site.picurl }}" alt="LOGO" /></a>
+            <a href="/"><img src="{{ site.picurl }}" aria-hidden="true" alt="LOGO" data-share="false" />
+            </a>
             <!-- Logo in Top Section -->
           </div>
           <!-- Logo desktop(Logo in Top Section) End -->
@@ -210,6 +211,7 @@
               src="{{site.adurl1}}"
               alt="Advert"
               style="max-width: 100%; height: auto"
+              data-share="false"
             />
           </div>
         </div>
@@ -224,7 +226,7 @@
             <!-- Menu desktop (Menu nav bar) Start -->
             <nav class="menu-desktop">
               <a class="logo-stick" href="/">
-                <img src="{{ site.picurl }}" alt="LOGO" />
+                <img src="{{ site.picurl }}" data-share="false" aria-hidden="true" alt="LOGO" />
               </a>
 
               <ul class="main-menu justify-content-center">
@@ -401,7 +403,7 @@
             <div class="col-lg-4 p-b-20">
               <div class="size-h-3 flex-s-c m-all-40">
                 <a href="/">
-                  <img class="max-s-full" src="{{ site.picurl2 }}" alt="LOGO" />
+                  <img class="max-s-full" src="{{ site.picurl2 }}" data-share="false" aria-hidden="true" alt="LOGO" />
                 </a>
               </div>
 
