@@ -5,8 +5,10 @@ certifi==2024.8.30
 charset-normalizer==3.4.0
 click==8.1.7
 Django==5.2
+django-ckeditor==6.7.2
 django-crontab==0.7.1
 django-ipware==7.0.1
+django-js-asset==3.1.2
 django-qr-code==4.1.0
 google-api-core==2.23.0
 google-auth==2.36.0
@@ -16,6 +18,7 @@ grpcio==1.68.0
 grpcio-status==1.68.0
 gTTS==2.5.4
 idna==3.10
+nepali-datetime==1.0.8.3
 pillow==11.2.1
 proto-plus==1.25.0
 protobuf==5.28.3

@@ -91,15 +91,6 @@
             style="font-size: 16px; color: #333"
           >
             <i class="fas fa-calendar"></i> {{ now|nepali_date }} B.S
-            <!-- <span class="dis-inline-block cl16 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
-								
-						{% for trend in trending %}
-						<span class="dis-inline-block slide100-txt-item animated visible-false" style="font-size: 13px;color: black;">
-							{{ trend.txt|slice:80 }}
-						</span>
-						{% endfor %} 
-
-					</span> -->
           </span>
           <button
             class="navbar-toggler"
@@ -113,89 +104,9 @@
             <span class="navbar-toggler-icon" style="color: black"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/"
-                  >Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                  >{{request.user}}</a
-                >
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/about">About</a>
-                  <a class="dropdown-item" href="/contact">Contact</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Log in / Sing up</a>
-              </li>
-            </ul>
-          </div>
         </nav>
-
         <!-- Bootstrap Navbar End -->
 
-        <!-- Top Bar Start -->
-        <div class="topbar" style="display: none">
-          <div class="content-topbar h-100 p-rl-30">
-            <div class="align-self-stretch size-w-0 pos-relative m-r-30">
-              <div class="f2-s-1 flex-wr-s-c s-full ab-t-l p-b-2">
-                <span class="text-uppercase cl0 p-r-8"> Trending Now: </span>
-
-                <span
-                  class="dis-inline-block cl16 slide100-txt pos-relative size-w-0"
-                  data-in="fadeInDown"
-                  data-out="fadeOutDown"
-                >
-                  {% for trend in trending %}
-                  <span
-                    class="dis-inline-block slide100-txt-item animated visible-false"
-                  >
-                    {{ trend.txt }}
-                  </span>
-                  {% endfor %}
-                </span>
-              </div>
-            </div>
-
-            <div class="flex-wr-e-c">
-              <div class="left-topbar">
-                <a href="/about" class="left-topbar-item"> About </a>
-
-                <a href="/contact" class="left-topbar-item"> Contact </a>
-
-                <a href="/login" class="left-topbar-item"> Log in / Sing up </a>
-
-                <a href="#" class="left-topbar-item"></a>
-              </div>
-
-              <div class="right-topbar p-l-18">
-                <a href="{{ site.fb }}">
-                  <span class="fab fa-facebook-f"></span>
-                </a>
-
-                <a href="{{ site.tw }}">
-                  <span class="fab fa-twitter"></span>
-                </a>
-
-                <a href="{{ site.yt }}">
-                  <span class="fab fa-youtube"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Top Bar End -->
 
         <!-- Start (Top Logo) -->
         <div class="wrap-logo container">
@@ -223,6 +134,7 @@
           style="margin-bottom: 10px"
         >
           <div class="main-nav" style="background-color: #125b8e">
+            
             <!-- Menu desktop (Menu nav bar) Start -->
             <nav class="menu-desktop">
               <a class="logo-stick" href="/">
