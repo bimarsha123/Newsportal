@@ -1,12 +1,14 @@
 {% load static %} {% load humanize %} {% load nepali_date_tags %}
-
-<!DOCTYPE html>
 <html style="scroll-behavior: smooth;" lang="en">
   <head>
     {% block headblock %} {% endblock %}
 
+    <title>{{ site.name }}</title>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#125b8e" />
+
     <!--===============================================================================================-->
     <link
       rel="icon"
@@ -131,9 +133,10 @@
         <!-- Start -->
         <div
           class="wrap-main-nav vesper-libre-bold"
-          style="margin-bottom: 10px"
+          style="margin-bottom: 10px; overflow-x: auto; align-content: center; flex-wrap: wrap;"
         >
-          <div class="main-nav" style="background-color: #125b8e">
+            
+          <div class="main-nav" style="background-color: #125b8e;">
             
             <!-- Menu desktop (Menu nav bar) Start -->
             <nav class="menu-desktop">
@@ -152,147 +155,149 @@
                 <li class="mega-menu-item">
                   <a href="{% url 'category' %}?q={{ gg.id }}">{{ gg.name }}</a>
 
-                  <div class="sub-mega-menu">
+                  <!--<div class="sub-mega-menu">-->
                     <!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) Start -->
-                    <div class="nav flex-column nav-pills" role="tablist">
-                      <a
-                        class="nav-link active"
-                        data-toggle="pill"
-                        href="#news-0"
-                        role="tab"
-                        >All</a
-                      >
+                  <!--  <div class="nav flex-column nav-pills" role="tablist">-->
+                  <!--    <a-->
+                  <!--      class="nav-link active"-->
+                  <!--      data-toggle="pill"-->
+                  <!--      href="#news-0"-->
+                  <!--      role="tab"-->
+                  <!--      >All</a-->
+                  <!--    >-->
 
-                      {% for subcat in subcat %} {% if subcat.catid == gg.pk %}
-                      <a
-                        class="nav-link"
-                        data-toggle="pill"
-                        href="#{{ subcat.pk }}"
-                        role="tab"
-                        >{{ subcat.name }}</a
-                      >
-                      {% endif %} {% endfor %}
-                    </div>
+                  <!--    {% for subcat in subcat %} {% if subcat.catid == gg.pk %}-->
+                  <!--    <a-->
+                  <!--      class="nav-link"-->
+                  <!--      data-toggle="pill"-->
+                  <!--      href="#{{ subcat.pk }}"-->
+                  <!--      role="tab"-->
+                  <!--      >{{ subcat.name }}</a-->
+                  <!--    >-->
+                  <!--    {% endif %} {% endfor %}-->
+                  <!--  </div>-->
                     <!-- Sub Menu Bar (When i click or put cursor on Category Besides Home) End -->
 
                     <!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) Start -->
-                    <div class="tab-content">
-                      <div
-                        class="tab-pane show active"
-                        id="news-0"
-                        role="tabpanel"
-                      >
-                        <div class="row">
+                  <!--  <div class="tab-content">-->
+                  <!--    <div-->
+                  <!--      class="tab-pane show active"-->
+                  <!--      id="news-0"-->
+                  <!--      role="tabpanel"-->
+                  <!--    >-->
+                  <!--      <div class="row">-->
                           <!-- here news is a query name from main app's views -->
-                          {% for hh in news %} {% if hh.ocatid_id == gg.pk %}
+                  <!--        {% for hh in news %} {% if hh.ocatid_id == gg.pk %}-->
                           <!-- pk means id of the category -->
-                          <div class="col-3">
+                  <!--        <div class="col-3">-->
                             <!-- Item post -->
-                            <div>
-                              <a
-                                href="{% url 'news_detail' word=hh.id %}"
-                                class="wrap-pic-w hov1 trans-03"
-                              >
-                                <img
-                                  style="
-                                    display: inline-block;
-                                    width: 220x;
-                                    height: 110px;
-                                  "
-                                  src="/media/{{ hh.picture.name }}"
-                                  alt="IMG"
-                                />
-                              </a>
+                  <!--          <div>-->
+                  <!--            <a-->
+                  <!--              href="{% url 'news_detail' word=hh.id %}"-->
+                  <!--              class="wrap-pic-w hov1 trans-03"-->
+                  <!--            >-->
+                  <!--              <img-->
+                  <!--                style="-->
+                  <!--                  display: inline-block;-->
+                  <!--                  width: 220x;-->
+                  <!--                  height: 110px;-->
+                  <!--                "-->
+                  <!--                src="/media/{{ hh.picture.name }}"-->
+                  <!--                alt="IMG"-->
+                  <!--              />-->
+                  <!--            </a>-->
 
-                              <div class="p-t-10">
-                                <h5 class="p-b-5">
-                                  <a
-                                    href="#"
-                                    class="f1-s-5 cl3 hov-cl10 trans-03"
-                                  >
-                                    {{ hh.name }}
-                                  </a>
-                                </h5>
+                  <!--            <div class="p-t-10">-->
+                  <!--              <h5 class="p-b-5">-->
+                  <!--                <a-->
+                  <!--                  href="#"-->
+                  <!--                  class="f1-s-5 cl3 hov-cl10 trans-03"-->
+                  <!--                >-->
+                  <!--                  {{ hh.name }}-->
+                  <!--                </a>-->
+                  <!--              </h5>-->
 
-                                <span class="cl8">
-                                  <a
-                                    href="{% url 'news_detail' word=hh.id %}"
-                                    class="f1-s-6 cl8 hov-cl10 trans-03"
-                                  >
-                                    {{ hh.ocatid }}
-                                  </a>
+                  <!--              <span class="cl8">-->
+                  <!--                <a-->
+                  <!--                  href="{% url 'news_detail' word=hh.id %}"-->
+                  <!--                  class="f1-s-6 cl8 hov-cl10 trans-03"-->
+                  <!--                >-->
+                  <!--                  {{ hh.ocatid }}-->
+                  <!--                </a>-->
 
-                                  <span class="f1-s-3 m-rl-3"> - </span>
+                  <!--                <span class="f1-s-3 m-rl-3"> - </span>-->
 
-                                  <span class="f1-s-3"> {{ hh.created_at|naturaltime }} </span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          {% endif%} {% endfor %}
-                        </div>
-                      </div>
+                  <!--                <span class="f1-s-3"> {{ hh.created_at|naturalday }} </span>-->
+                  <!--              </span>-->
+                  <!--            </div>-->
+                  <!--          </div>-->
+                  <!--        </div>-->
+                  <!--        {% endif%} {% endfor %}-->
+                  <!--      </div>-->
+                  <!--    </div>-->
 
-                      {% for subcat2 in subcat %}
-                      <div
-                        class="tab-pane"
-                        id="{{ subcat2.pk }}"
-                        role="tabpanel"
-                      >
-                        <div class="row">
+                  <!--    {% for subcat2 in subcat %}-->
+                  <!--    <div-->
+                  <!--      class="tab-pane"-->
+                  <!--      id="{{ subcat2.pk }}"-->
+                  <!--      role="tabpanel"-->
+                  <!--    >-->
+                  <!--      <div class="row">-->
                           <!-- here news is a query name from main app's views -->
-                          {% for hh in news %} {% if hh.catid == subcat2.pk %}
+                  <!--        {% for hh in news %} {% if hh.catid == subcat2.pk %}-->
                           <!-- pk means id of the category -->
-                          <div class="col-3">
+                  <!--        <div class="col-3">-->
                             <!-- Item post -->
-                            <div>
-                              <a
-                                href="{% url 'news_detail' word=hh.id %}"
-                                class="wrap-pic-w hov1 trans-03"
-                              >
-                                <img
-                                  style="
-                                    display: inline-block;
-                                    width: 220x;
-                                    height: 110px;
-                                  "
-                                  src="/media/{{ hh.picture.name }}"
-                                  alt="IMG"
-                                />
-                              </a>
+                  <!--          <div>-->
+                  <!--            <a-->
+                  <!--              href="{% url 'news_detail' word=hh.id %}"-->
+                  <!--              class="wrap-pic-w hov1 trans-03"-->
+                  <!--            >-->
+                  <!--              <img-->
+                  <!--                style="-->
+                  <!--                  display: inline-block;-->
+                  <!--                  width: 220x;-->
+                  <!--                  height: 110px;-->
+                  <!--                "-->
+                  <!--                src="/media/{{ hh.picture.name }}"-->
+                  <!--                alt="IMG"-->
+                  <!--              />-->
+                  <!--            </a>-->
 
-                              <div class="p-t-10">
-                                <h5 class="p-b-5">
-                                  <a
-                                    href="#"
-                                    class="f1-s-5 cl3 hov-cl10 trans-03"
-                                  >
-                                    {{ hh.name }}
-                                  </a>
-                                </h5>
+                  <!--            <div class="p-t-10">-->
+                  <!--              <h5 class="p-b-5">-->
+                  <!--                <a-->
+                  <!--                  href="#"-->
+                  <!--                  class="f1-s-5 cl3 hov-cl10 trans-03"-->
+                  <!--                >-->
+                  <!--                  {{ hh.name }}-->
+                  <!--                </a>-->
+                  <!--              </h5>-->
 
-                                <span class="cl8">
-                                  <a
-                                    href="{% url 'news_detail' word=hh.id %}"
-                                    class="f1-s-6 cl8 hov-cl10 trans-03"
-                                  >
-                                    {{ hh.ocatid }}
-                                  </a>
+                  <!--              <span class="cl8">-->
+                  <!--                <a-->
+                  <!--                  href="{% url 'news_detail' word=hh.id %}"-->
+                  <!--                  class="f1-s-6 cl8 hov-cl10 trans-03"-->
+                  <!--                >-->
+                  <!--                  {{ hh.ocatid }}-->
+                  <!--                </a>-->
 
-                                  <span class="f1-s-3 m-rl-3"> - </span>
+                  <!--                <span class="f1-s-3 m-rl-3"> - </span>-->
 
-                                  <span class="f1-s-3"> {{ hh.created_at|naturaltime }} </span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          {% endif%} {% endfor %}
-                        </div>
-                      </div>
-                      {% endfor %}
-                    </div>
+                  <!--                <span class="f1-s-3"> {{ hh.created_at|naturalday }} </span>-->
+                  <!--              </span>-->
+                  <!--            </div>-->
+                  <!--          </div>-->
+                  <!--        </div>-->
+                  <!--        {% endif%} {% endfor %}-->
+                  <!--      </div>-->
+                  <!--    </div>-->
+                  <!--    {% endfor %}-->
+                  <!--  </div>-->
                     <!-- Category and sub-category news shows in menu bar (When i click or put cursor on Category Besides Home) End -->
-                  </div>
+                  <!--</div>-->
+                  
+                  
                 </li>
                 {% endif %} {% endfor %}
               </ul>
@@ -397,7 +402,7 @@
                       </a>
                     </h6>
 
-                    <span class="f1-s-3 cl0"> {{ pop.created_at|naturaltime }} </span>
+                    <span class="f1-s-3 cl0"> {{ pop.created_at|naturalday }} </span>
                   </div>
                 </li>
                 {% endfor %}

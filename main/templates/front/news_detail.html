@@ -1,11 +1,10 @@
 {% extends 'front/master.html' %}
-
-
 {% load static %} {% load humanize %}
 {% block headblock %}
 {% for i in shownews %}
 <meta property="og:image:secure_url" content="https://www.engineerkhabar.com/media/{{ i.picture.name }}" />
 <meta property="og:image" content="https://www.engineerkhabar.com/media/{{ i.picture.name }}" />
+
 {% endfor %}
 {% endblock %}
 
@@ -15,12 +14,6 @@
 {% block mainblock %}
 
 {% for i in shownews %}
-
-
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Your image description" />
-
 <title>{{ i.name }}</title>
 
 <!-- Breadcrumb -->

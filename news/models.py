@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
-from ckeditor.fields import RichTextField
+from tinymce import models as tinymce_models
 from cat.models import Cat  # Import from the correct app
 
 # Create your models here.
@@ -11,8 +11,8 @@ class News(models.Model):
         (False, 'Unpublish')
     )
     name = models.CharField(max_length=200)
-    short_txt = RichTextField()
-    body_txt = RichTextField()
+    short_txt = tinymce_models.HTMLField()
+    body_txt = tinymce_models.HTMLField()
     date = models.CharField(max_length=12)
     time = models.CharField(max_length=12,default="00:00")
     picname = models.TextField()

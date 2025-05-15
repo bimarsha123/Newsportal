@@ -308,6 +308,13 @@ a.left-topbar-item:hover {
   transform: translateY(0%);
 }
 
+
+@media (max-width: 768px) {
+  .main-nav {
+    width: auto;
+  }
+}
+
 .menu-desktop {
   max-width: calc(100% - 30px);
   width: 1050px;
